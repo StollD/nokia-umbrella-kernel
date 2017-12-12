@@ -116,3 +116,6 @@ all.config
 # Umbrella additions
 /out/
 /prebuilt/
+
+# Wireguard
+net/wireguard/
