@@ -5,16 +5,16 @@ export ARCH="arm64"
 export SUBARCH="arm64"
 
 # Fetch the toolchain
-if [ ! -d prebuilt/gcc-linaro-4.9 ]; then
-    wget -O gcc-linaro-4.9.tar.xz https://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
-    tar xJvf gcc-linaro-4.9.tar.xz    
+if [ ! -d prebuilt/gcc-arm-8.2 ]; then
+    wget -O gcc-arm-8.2.tar.xz https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-a/8.2-2019.01/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu.tar.xz
+    tar xJvf gcc-arm-8.2.tar.xz    
     if [ ! -d prebuilt ]; then
         mkdir prebuilt
     fi
-    mv gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu prebuilt/gcc-linaro-4.9
-    rm gcc-linaro-4.9.tar.xz
+    mv gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu prebuilt/gcc-arm-8.2
+    rm gcc-arm-8.2.tar.xz
 fi
-export CROSS_COMPILE="$(pwd)/prebuilt/gcc-linaro-4.9/bin/aarch64-linux-gnu-"
+export CROSS_COMPILE="$(pwd)/prebuilt/gcc-arm-8.2/bin/aarch64-linux-gnu-"
 
 # Set the output directory
 export KBUILD_OUTPUT="$(pwd)/out"
