@@ -5,10 +5,14 @@ export ARCH="arm64"
 export SUBARCH="arm64"
 
 # Fetch the toolchain
-if [ ! -d .toolkit ]; then
-    git clone https://bitbucket.org/matthewdalex/aarch64-linux-android-4.9 .toolkit
+if [ ! -d prebuilt ]; then
+    wget -O gcc-linaro-4.9.tar.xz https://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
+    tar xJvf gcc-linaro-4.9.tar.xz    
+    mkdir prebuilt
+    mv gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu prebuilt/gcc-linaro-4.9
+    rm gcc-linaro-4.9.tar.xz
 fi
-export CROSS_COMPILE="$(pwd)/.toolkit/bin/aarch64-linux-android-"
+export CROSS_COMPILE="$(pwd)/prebuilt/gcc-linaro-4.9/bin/aarch64-linux-gnu-"
 
 # Set the output directory
 export KBUILD_OUTPUT="$(pwd)/out"
