@@ -5,10 +5,12 @@ export ARCH="arm64"
 export SUBARCH="arm64"
 
 # Fetch the toolchain
-if [ ! -d prebuilt ]; then
+if [ ! -d prebuilt/gcc-linaro-4.9 ]; then
     wget -O gcc-linaro-4.9.tar.xz https://releases.linaro.org/components/toolchain/binaries/4.9-2017.01/aarch64-linux-gnu/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
     tar xJvf gcc-linaro-4.9.tar.xz    
-    mkdir prebuilt
+    if [ ! -d prebuilt ]; then
+        mkdir prebuilt
+    fi
     mv gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu prebuilt/gcc-linaro-4.9
     rm gcc-linaro-4.9.tar.xz
 fi
